@@ -4,18 +4,18 @@ OpenSearch es una herramienta poderosa y flexible para la indexación y gestión
 
 En este taller aprenderás cómo integrar OpenSearch a un proyecto Python y así crear tu propio sistema de búsqueda con estas herramientas. Aprenderás a:
 
-    - Instalar y configurar OpenSearch 2.11.0 con docker
-    - Conectar OpenSearch a Python
-    - Indexar datos en OpenSearch
-    - Realizar búsquedas en OpenSearch
-    - Utilizar funcionalidades avanzadas de OpenSearch
+- Instalar y configurar OpenSearch 2.11.0 con docker
+- Conectar OpenSearch a Python
+- Indexar datos en OpenSearch
+- Realizar búsquedas en OpenSearch
+- Utilizar funcionalidades avanzadas de OpenSearch
 
 ¿Qué aprenderás?
 
-    - Qué es [OpenSearch](https://opensearch.org/) y qué es [opensearch-py](https://opensearch.org/docs/latest/clients/python-low-level/)
-    - Cómo crear tu propio sistema de búsqueda con OpenSearch y Django usando [django-opensearch-dsl](https://github.com/Codoc-os/django-opensearch-dsl)
-    - Cómo utilizar OpenSearch en un proyecto python que no use Django
-    - Cómo realizar búsquedas básicas e intermedias en tus datos
+- Qué es [OpenSearch](https://opensearch.org/) y qué es [opensearch-py](https://opensearch.org/docs/latest/clients/python-low-level/)
+- Cómo crear tu propio sistema de búsqueda con OpenSearch y Django usando [django-opensearch-dsl](https://github.com/Codoc-os/django-opensearch-dsl)
+- Cómo utilizar OpenSearch en un proyecto python que no use Django
+- Cómo realizar búsquedas básicas e intermedias en tus datos
 
 ## Requisitos
 
@@ -44,11 +44,29 @@ En este repositorio encontrarás tres carpetas:
 ```
 docker compose -f local.yml build
 docker compose -f local.yml up
-docker compose -f local.yml run --rm django python manage.py createsuperuser
+
 ```
 
-Luego, ve a [http://localhost:3000/](http://localhost:3000/). Verás la página de inicio por defecto de cookieCutter
+Luego, ve a [http://localhost:3000/](http://localhost:3000/). Verás la página de inicio por defecto de cookie cutter
 
 > En caso de necesitar un usuario, puedes crearlo con `docker compose -f local.yml run --rm django python manage.py createsuperuser`. Sin embargo, no será requerido para el workshop.
+
+### **django_project** - Pokemons y PokeAPI
+
+En la parte Django de este workshop, crearemos una base de datos local de Pokemons que será indexada y consultada via OpenSearch.
+
+Utilizaremos la información brindada por [PokeAPI](https://pokeapi.co/docs/v2) para generar información en nuestra base de datos.
+
+Toda el código relacionado estará en la app [pokemons](django_project/opensearch_workshop/pokemons/)
+
+Para cargar los datos, corre
+
+```
+docker compose -f local.yml run --rm django python manage.py loaddata pokemons
+```
+
+Esto creará los primeros 100 pokemons en tu base de datos.
+
+> Si deseas crear más pokemons o agregar más datos a la base de datos, puedes consultar y modificar el script de consumo de la api [aquí](django_project/opensearch_workshop/pokemons/utils.py)
 
 [^1]: [Install-opensearch/docker - opensearch.org](https://opensearch.org/docs/latest/install-and-configure/install-opensearch/docker/#sample-docker-composeyml)
