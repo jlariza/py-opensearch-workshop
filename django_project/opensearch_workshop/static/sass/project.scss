@@ -34,3 +34,76 @@ $red: #b94a48;
   border-color: $dark-pink;
   color: $red;
 }
+
+.moves-list{
+  max-height: 150px;
+  overflow-y: scroll;
+}
+
+$normal: #ACAD99;
+$fighting: #C45D4C;
+$flying: #90AAD7;
+$poison: #B369AF;
+$ground: #CEB250;
+$rock: #BAA85E;
+$bug: #ACC23E;
+$ghost: #816DB6;
+$steel: #9FA9AF;
+$fire: #E87A3D;
+$water: #639CE4;
+$grass: #82C95B;
+$electric: #E7C536;
+$psychic: #E96C95;
+$ice: #81CFD7;
+$dragon: #8572C8;
+$dark: #79726B;
+$fairy: #E8B0EB;
+
+.grass{
+  background-color: $grass,
+}
+.poison{
+  background-color: $poison,
+}
+.fire{
+  background-color: $fire,
+}
+.flying{
+  background-color: $flying,
+}
+.water{
+  background-color: $water,
+}
+.bug{
+  background-color: $bug,
+}
+.normal{
+  background-color: $normal,
+}
+.electric{
+  background-color: $electric,
+}
+.ground{
+  background-color: $ground,
+}
+.fairy{
+  background-color: $fairy,
+}
+.fighting{
+  background-color: $fighting,
+}
+.psychic{
+  background-color: $psychic,
+}
+.rock{
+  background-color: $rock,
+}
+.steel{
+  background-color: $steel,
+}
+.ice{
+  background-color: $ice,
+}
+.ghost{
+  background-color: $ghost,
+}

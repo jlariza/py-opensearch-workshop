@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block title %}Search your Pokemon!{% endblock title %}
+{% block content %}
+<div class="container">
+  <div class="row">
+      <div class="col-sm-12">
+          <h2>Search your pokemon</h2>
+          <form action="/" method="GET">
+              {{ form|crispy }}
+              <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-sm-12 table-responsive">
+          <table class="table align-middle">
+              <thead>
+                  <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Image</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Types</th>
+                      <th scope="col">Abilities</th>
+                      <th scope="col">Moves</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for pokemon in pokemons %}
+                      <tr>
+                          <th scope="row">{{ pokemon.pokemon_id }}</th>
+                          <td>
+                              <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}">
+                          </td>
+                          <td>
+                              <b>{{ pokemon.name }}</b>
+                          </td>
+                          <td>
+                              {% for type in pokemon.types.all %}<span class="badge {{ type.name }}">{{ type.name }}</span>{% endfor %}
+                          </td>
+                          <td>
+                              {% for ability in pokemon.abilities.all %}<span class="badge bg-info">{{ ability.name }}</span>{% endfor %}
+                          </td>
+                          <td>
+                              <ul class="moves-list">
+                                  {% for move in pokemon.moves.all %}<li>{{ move.name }}</li>{% endfor %}
+                              </ul>
+                          </td>
+                      </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+      <div class="col-sm-12">
+          <div class="pagination">
+              <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                      {% if page_obj.has_previous %}
+                          <li class="page-item">
+                              <a class="page-link" href="?page=1">&laquo; first</a>
+                          </li>
+                          <li class="page-item">
+                              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                          </li>
+                      {% endif %}
+                      {% for page in page_obj.paginator.page_range %}
+                          <li class="page-item {% if page_obj.number == page %}active{% endif %}">
+                              <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                          </li>
+                      {% endfor %}
+                      {% if page_obj.has_next %}
+                          <li class="page-item">
+                              <a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a>
+                          </li>
+                          <li class="page-item">
+                              <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                          </li>
+                      {% endif %}
+                  </ul>
+              </nav>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}
