@@ -44,7 +44,6 @@ En este repositorio encontrarás tres carpetas:
 ```
 docker compose -f local.yml build
 docker compose -f local.yml up
-
 ```
 
 Luego, ve a [http://localhost:3000/](http://localhost:3000/). Verás la página de inicio por defecto de cookie cutter

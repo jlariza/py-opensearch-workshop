@@ -1,9 +1,6 @@
 # ruff: noqa: E501
 from .base import *  # noqa: F403
-from .base import INSTALLED_APPS
-from .base import MIDDLEWARE
-from .base import WEBPACK_LOADER
-from .base import env
+from .base import INSTALLED_APPS, MIDDLEWARE, WEBPACK_LOADER, env
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -31,7 +28,8 @@ CACHES = {
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 EMAIL_BACKEND = env(
-    "DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend",
+    "DJANGO_EMAIL_BACKEND",
+    default="django.core.mail.backends.console.EmailBackend",
 )
 
 # WhiteNoise

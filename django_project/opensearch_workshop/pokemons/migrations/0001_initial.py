@@ -7,41 +7,72 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='PokeAbility',
+            name="PokeAbility",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
-            name='PokeMove',
+            name="PokeMove",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
-            name='PokeType',
+            name="PokeType",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
-            name='Pokemon',
+            name="Pokemon",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('pokemon_id', models.IntegerField(unique=True)),
-                ('name', models.CharField(max_length=255)),
-                ('image', models.CharField(max_length=255)),
-                ('abilities', models.ManyToManyField(to='pokemons.pokeability')),
-                ('moves', models.ManyToManyField(to='pokemons.pokemove')),
-                ('types', models.ManyToManyField(to='pokemons.poketype')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("pokemon_id", models.IntegerField(unique=True)),
+                ("name", models.CharField(max_length=255)),
+                ("image", models.CharField(max_length=255)),
+                ("abilities", models.ManyToManyField(to="pokemons.pokeability")),
+                ("moves", models.ManyToManyField(to="pokemons.pokemove")),
+                ("types", models.ManyToManyField(to="pokemons.poketype")),
             ],
         ),
     ]

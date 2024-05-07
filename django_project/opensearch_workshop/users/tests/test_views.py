@@ -6,8 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.messages.middleware import MessageMiddleware
 from django.contrib.sessions.middleware import SessionMiddleware
-from django.http import HttpRequest
-from django.http import HttpResponseRedirect
+from django.http import HttpRequest, HttpResponseRedirect
 from django.test import RequestFactory
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -15,9 +14,8 @@ from django.utils.translation import gettext_lazy as _
 from opensearch_workshop.users.forms import UserAdminChangeForm
 from opensearch_workshop.users.models import User
 from opensearch_workshop.users.tests.factories import UserFactory
-from opensearch_workshop.users.views import UserRedirectView
-from opensearch_workshop.users.views import UserUpdateView
-from opensearch_workshop.users.views import user_detail_view
+from opensearch_workshop.users.views import (UserRedirectView, UserUpdateView,
+                                             user_detail_view)
 
 pytestmark = pytest.mark.django_db
 

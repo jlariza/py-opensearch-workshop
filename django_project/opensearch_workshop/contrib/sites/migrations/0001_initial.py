@@ -1,7 +1,6 @@
 import django.contrib.sites.models
 from django.contrib.sites.models import _simple_domain_name_validator
-from django.db import migrations
-from django.db import models
+from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
