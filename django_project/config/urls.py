@@ -8,7 +8,7 @@ from django.views.generic import RedirectView, TemplateView
 
 urlpatterns = [
     path("", include("opensearch_workshop.pokemons.urls", namespace="pokemons")),
-    path("/home", RedirectView.as_view(url="/"), name="home"),
+    path("home", RedirectView.as_view(url="/"), name="home"),
     path(
         "about/",
         TemplateView.as_view(template_name="pages/about.html"),
