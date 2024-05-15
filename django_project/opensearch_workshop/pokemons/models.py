@@ -31,5 +31,8 @@ class Pokemon(models.Model):
     image = models.CharField(max_length=255)
     abilities = models.ManyToManyField(PokeAbility)
 
+    class Meta:
+        ordering = ["pokemon_id"]
+
     def __str__(self):
         return f"{self.pokemon_id}-{self.name}"

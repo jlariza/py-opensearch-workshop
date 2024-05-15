@@ -14,8 +14,11 @@ from django.utils.translation import gettext_lazy as _
 from opensearch_workshop.users.forms import UserAdminChangeForm
 from opensearch_workshop.users.models import User
 from opensearch_workshop.users.tests.factories import UserFactory
-from opensearch_workshop.users.views import (UserRedirectView, UserUpdateView,
-                                             user_detail_view)
+from opensearch_workshop.users.views import (
+    UserRedirectView,
+    UserUpdateView,
+    user_detail_view,
+)
 
 pytestmark = pytest.mark.django_db
 
