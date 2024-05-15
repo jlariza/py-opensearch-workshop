@@ -78,6 +78,7 @@ THIRD_PARTY_APPS = [
     "allauth.mfa",
     "allauth.socialaccount",
     "webpack_loader",
+    "django_opensearch_dsl",
 ]
 
 LOCAL_APPS = [
@@ -291,3 +292,20 @@ WEBPACK_LOADER = {
 # Your stuff...
 # ------------------------------------------------------------------------------
 POKEAPI_URL = "https://pokeapi.co/api/v2/pokemon/"
+
+# OPEN_SEARCH_CONFIGURATION
+OPEN_SEARCH_USER = "admin"
+OPEN_SEARCH_PASSWORD = "admin"
+OPENSEARCH_DSL_AUTO_REFRESH = True
+OPEN_SEARCH_HOST = "192.168.64.1"
+OPENSEARCH_DSL = {
+    "default": {
+        "hosts": [{"host": OPEN_SEARCH_HOST, "port": 9200}],
+        "http_compress": False,
+        "http_auth": (OPEN_SEARCH_USER, OPEN_SEARCH_PASSWORD),
+        "use_ssl": True,
+        "verify_certs": False,
+        "ssl_assert_hostname": False,
+        "ssl_show_warn": False,
+    },
+}

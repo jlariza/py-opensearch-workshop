@@ -41,7 +41,7 @@ En este repositorio encontrarás tres carpetas:
 
 2. ve a la carpeta **django_project** y corre
 
-```
+```bash
 docker compose -f local.yml build
 docker compose -f local.yml up
 ```
@@ -60,7 +60,7 @@ Toda el código relacionado estará en la app [pokemons](django_project/opensear
 
 Para cargar los datos, corre
 
-```
+```bash
 docker compose -f local.yml run --rm django python manage.py loaddata pokemons
 ```
 
@@ -69,3 +69,19 @@ Esto creará los primeros 100 pokemons en tu base de datos.
 > Si deseas crear más pokemons o agregar más datos a la base de datos, puedes consultar y modificar el script de consumo de la api [aquí](django_project/opensearch_workshop/pokemons/utils.py)
 
 [^1]: [Install-opensearch/docker - opensearch.org](https://opensearch.org/docs/latest/install-and-configure/install-opensearch/docker/#sample-docker-composeyml)
+
+### **django_project** - [OpenSearch management commands](https://django-opensearch-dsl.readthedocs.io/en/latest/management/)
+
+- Para crear los indices de tu proyecto en OpenSearch, corre:
+
+```bash
+docker compose -f local.yml run --rm django python manage.py opensearch index create
+```
+
+> Si modificas algún indice, puedes recrearlo con `docker compose -f local.yml run --rm django python manage.py opensearch index rebuild`
+
+- Para indexar las instancias de tu base de datos, corre:
+
+```bash
+docker compose -f local.yml run --rm django python manage.py opensearch document index
+```

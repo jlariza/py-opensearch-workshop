@@ -16,3 +16,6 @@ crispy-bootstrap5==2024.2  # https://github.com/django-crispy-forms/crispy-boots
 django-redis==5.4.0  # https://github.com/jazzband/django-redis
 django-webpack-loader==3.1.0  # https://github.com/django-webpack/django-webpack-loader
 requests==2.31.0
+
+# OpenSearch
+django-opensearch-dsl==0.6.2 # https://django-opensearch-dsl.readthedocs.io/en/latest/
