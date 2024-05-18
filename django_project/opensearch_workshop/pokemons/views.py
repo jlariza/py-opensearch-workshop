@@ -6,6 +6,7 @@ from django.views.generic.edit import FormMixin
 
 from .forms import SearchPokemonForm
 from .models import Pokemon
+from .documents import PokemonDocument
 
 
 # Create your views here.
@@ -24,5 +25,20 @@ class PokemonListView(FormMixin, ListView):
         queryset = super().get_queryset()
         if form.is_valid():
             data = form.cleaned_data
-            queryset = queryset.filter(name__icontains=data["name"])
+            name = data["name"]
+            os_query = (
+                PokemonDocument.search()
+                .filter(
+                    "query_string",
+                    query=f"*{name}*",
+                    fields=[
+                        "name",
+                    ],
+                )
+                .sort("pokemon_id")
+                # los resultados de opensearch se deben paginar
+                # pero está fuera del scope de este taller
+                .extra(size=1000, track_total_hits=True)
+            )
+            queryset = os_query.to_queryset()
         return queryset
