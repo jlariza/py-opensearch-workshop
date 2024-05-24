@@ -3,10 +3,11 @@ from typing import Any
 from django.db.models.query import QuerySet
 from django.views.generic import ListView
 from django.views.generic.edit import FormMixin
+from opensearchpy.helpers.query import Q
 
+from .documents import PokemonDocument
 from .forms import SearchPokemonForm
 from .models import Pokemon
-from .documents import PokemonDocument
 
 
 # Create your views here.
@@ -26,15 +27,37 @@ class PokemonListView(FormMixin, ListView):
         if form.is_valid():
             data = form.cleaned_data
             name = data["name"]
+            query = Q(
+                "bool",
+                should=[
+                    Q("query_string", query=f"*{name}*", fields=["name"]),
+                    Q(
+                        "nested",
+                        path="types",
+                        query=Q(
+                            "query_string", query=f"*{name}*", fields=["types.name"]
+                        ),
+                    ),
+                    Q(
+                        "nested",
+                        path="moves",
+                        query=Q(
+                            "query_string", query=f"*{name}*", fields=["moves.name"]
+                        ),
+                    ),
+                    Q(
+                        "nested",
+                        path="abilities",
+                        query=Q(
+                            "query_string", query=f"*{name}*", fields=["abilities.name"]
+                        ),
+                    ),
+                ],
+                minimum_should_match=1,
+            )
             os_query = (
                 PokemonDocument.search()
-                .filter(
-                    "query_string",
-                    query=f"*{name}*",
-                    fields=[
-                        "name",
-                    ],
-                )
+                .query(query)
                 .sort("pokemon_id")
                 # los resultados de opensearch se deben paginar
                 # pero está fuera del scope de este taller
