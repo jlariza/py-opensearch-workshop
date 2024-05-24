@@ -1,5 +1,7 @@
 # Indexa tu información con OpenSearch y Python
 
+License: MIT
+
 OpenSearch es una herramienta poderosa y flexible para la indexación y gestión de datos. A su vez, Python es un lenguaje de programación popular y versátil que se puede utilizar para trabajar en gran cantidad de aplicaciones (Web, AI, Data Science, etc.)
 
 En este taller aprenderás cómo integrar OpenSearch a un proyecto Python y así crear tu propio sistema de búsqueda con estas herramientas. Aprenderás a:
@@ -31,7 +33,7 @@ En este repositorio encontrarás tres carpetas:
 
 1. **opensearch-container**: Contiene el archivo `compose.yml` para configurar los contenedores de OpenSearch [^1]
 2. **django_project**: Contiene un proyecto de ejemplo en Django, creado con [cookiecutter-django](https://github.com/cookiecutter/cookiecutter-django)
-3. **pure python**: Contiene un script con ejemplos para usar opensearch-py
+3. **pure_python**: Contiene un [flask](https://flask.palletsprojects.com/en/3.0.x/) minimalista con ejemplos para usar opensearch-py.
 
 ## Configuración de instancia local
 
@@ -49,6 +51,15 @@ docker compose -f local.yml up
 Luego, ve a [http://localhost:3000/](http://localhost:3000/). Verás la página de inicio por defecto de cookie cutter
 
 > En caso de necesitar un usuario, puedes crearlo con `docker compose -f local.yml run --rm django python manage.py createsuperuser`. Sin embargo, no será requerido para el workshop.
+
+3. ve a la carpeta **pure_python** y corre
+
+```bash
+docker compose build
+docker compose up
+```
+
+Luego ve a [localhost:8000](http://localhost:8000/). Verás un `Hello World`.
 
 ### **django_project** - Pokemons y PokeAPI
 
