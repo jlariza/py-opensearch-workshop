@@ -1,0 +1,64 @@
+<!doctype html>
+<title>Pokemon search</title>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12">
+              <h2>Search your pokemon</h2>
+              <form action="/" method="GET">
+                <input type="text" class="form-control" id="search" name="search" >
+                  <button type="submit" class="btn btn-primary">Search</button>
+              </form>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-12 table-responsive">
+              <table class="table align-middle">
+                  <thead>
+                      <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Image</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Types</th>
+                          <th scope="col">Abilities</th>
+                          <th scope="col">Moves</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for pokemon in pokemons %}
+                          <tr>
+                              <th scope="row">{{ pokemon.pokemon_id }}</th>
+                              <td>
+                                  <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}">
+                              </td>
+                              <td>
+                                  <b>{{ pokemon.name }}</b>
+                              </td>
+                              <td>
+                                  {% for type in pokemon.types.all %}<span class="badge {{ type.name }}">{{ type.name }}</span>{% endfor %}
+                              </td>
+                              <td>
+                                  {% for ability in pokemon.abilities.all %}<span class="badge bg-info">{{ ability.name }}</span>{% endfor %}
+                              </td>
+                              <td>
+                                  <ul class="moves-list">
+                                      {% for move in pokemon.moves.all %}<li>{{ move.name }}</li>{% endfor %}
+                                  </ul>
+                              </td>
+                          </tr>
+                        {% else %}
+                        <tr>
+                          <th scope="row">No Results found!</th>
+                        </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</body>
