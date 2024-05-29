@@ -19,6 +19,18 @@ class OpenSearchConnector(object):
         response = self.client.indices.create(index_name, body=index_body)
         return response
 
+    def delete_index(self, index_name):
+        response = self.client.indices.delete(index_name)
+        return response
+
+    def index_document(self, index_name, document, refresh=True):
+        response = self.client.index(index=index_name, body=document, refresh=refresh)
+        return response
+
+    def delete_document(self, index_name, document_id, refresh=True):
+        response = self.client.delete(index=index_name, id=document_id, refresh=refresh)
+        return response
+
     def search(self, index_name, query):
         search = Search(
             using=self.client,
@@ -26,19 +38,3 @@ class OpenSearchConnector(object):
         )
         response = search.query(query).execute()
         return response
-
-
-# connector = OpenSearchConnector()
-# connector.create_index(
-#     "books",
-#     {
-#         "mappings": {
-#             "properties": {
-#                 "title": {"type": "text"},
-#                 "author": {"type": "text"},
-#                 "published_on": {"type": "date"},
-#                 "pages": {"type": "integer"},
-#             }
-#         },
-#     },
-# )
