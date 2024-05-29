@@ -11,7 +11,7 @@
           <div class="col-sm-12">
               <h2>Search your pokemon</h2>
               <form action="/" method="GET">
-                <input type="text" class="form-control" id="search" name="search" >
+                <input type="text" class="form-control" id="search" name="search" value="{{ search }}">
                   <button type="submit" class="btn btn-primary">Search</button>
               </form>
           </div>
@@ -22,7 +22,6 @@
                   <thead>
                       <tr>
                           <th scope="col">ID</th>
-                          <th scope="col">Image</th>
                           <th scope="col">Name</th>
                           <th scope="col">Types</th>
                           <th scope="col">Abilities</th>
@@ -34,20 +33,17 @@
                           <tr>
                               <th scope="row">{{ pokemon.pokemon_id }}</th>
                               <td>
-                                  <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}">
-                              </td>
-                              <td>
                                   <b>{{ pokemon.name }}</b>
                               </td>
                               <td>
-                                  {% for type in pokemon.types.all %}<span class="badge {{ type.name }}">{{ type.name }}</span>{% endfor %}
+                                  {% for type in pokemon.types %}<span class="badge {{ type.name }}">{{ type.name }}</span>{% endfor %}
                               </td>
                               <td>
-                                  {% for ability in pokemon.abilities.all %}<span class="badge bg-info">{{ ability.name }}</span>{% endfor %}
+                                  {% for ability in pokemon.abilities %}<span class="badge bg-info">{{ ability.name }}</span>{% endfor %}
                               </td>
                               <td>
                                   <ul class="moves-list">
-                                      {% for move in pokemon.moves.all %}<li>{{ move.name }}</li>{% endfor %}
+                                      {% for move in pokemon.moves %}<li>{{ move.name }}</li>{% endfor %}
                                   </ul>
                               </td>
                           </tr>
@@ -62,3 +58,58 @@
       </div>
   </div>
 </body>
+<style>
+.moves-list{
+  max-height: 150px;
+  overflow-y: scroll;
+}
+.grass {
+  background-color: #82C95B;
+}
+.poison {
+  background-color: #B369AF;
+}
+.fire {
+  background-color: #E87A3D;
+}
+.flying {
+  background-color: #90AAD7;
+}
+.water {
+  background-color: #639CE4;
+}
+.bug {
+  background-color: #ACC23E;
+}
+.normal {
+  background-color: #ACAD99;
+}
+.electric {
+  background-color: #E7C536;
+}
+.ground {
+  background-color: #CEB250;
+}
+.fairy {
+  background-color: #E8B0EB;
+}
+.fighting {
+  background-color: #C45D4C;
+}
+.psychic {
+  background-color: #E96C95;
+}
+.rock {
+  background-color: #BAA85E;
+}
+.steel {
+  background-color: #9FA9AF;
+}
+.ice {
+  background-color: #81CFD7;
+}
+.ghost {
+  background-color: #816DB6;
+}
+
+</style>
