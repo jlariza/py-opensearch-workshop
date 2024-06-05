@@ -1,6 +1,6 @@
 # Indexa tu información con OpenSearch y Python
 
-[License: MIT](https://github.com/jlariza/py-opensearch-workshop/blob/main/LICENSE)
+[![es](https://img.shields.io/badge/lang-es-red.svg)](/README.md) [![en](https://img.shields.io/badge/lang-en-blue.svg)](/README.en.md) [![GitHub License](https://img.shields.io/github/license/jlariza/py-opensearch-workshop)](/LICENSE)
 
 OpenSearch es una herramienta poderosa y flexible para la indexación y gestión de datos. A su vez, Python es un lenguaje de programación popular y versátil que se puede utilizar para trabajar en gran cantidad de aplicaciones (Web, AI, Data Science, etc.)
 
@@ -61,7 +61,7 @@ docker compose up
 
 Luego ve a [localhost:8000](http://localhost:8000/). Verás un `Hello World`.
 
-### **django_project** - Pokemons y PokeAPI
+## **django_project** - Pokemons y PokeAPI
 
 En la parte Django de este workshop, crearemos una base de datos local de Pokemons que será indexada y consultada via OpenSearch.
 
@@ -79,8 +79,6 @@ Esto creará los primeros 100 pokemons en tu base de datos.
 
 > Si deseas crear más pokemons o agregar más datos a la base de datos, puedes consultar y modificar el script de consumo de la api [aquí](django_project/opensearch_workshop/pokemons/utils.py)
 
-[^1]: [Install-opensearch/docker - opensearch.org](https://opensearch.org/docs/latest/install-and-configure/install-opensearch/docker/#sample-docker-composeyml)
-
 ### **django_project** - [OpenSearch management commands](https://django-opensearch-dsl.readthedocs.io/en/latest/management/)
 
 - Para crear los indices de tu proyecto en OpenSearch, corre:
@@ -97,6 +95,8 @@ docker compose -f local.yml run --rm django python manage.py opensearch index cr
 docker compose -f local.yml run --rm django python manage.py opensearch document index
 ```
 
-### **pure_python**
+## **pure_python**
 
 En la parte de python puro del workshop, consultaremos el índice de pokemons de OpenSearch creado con la app de Django; esta vez usando la librería [opensearch-py](https://opensearch.org/docs/latest/clients/python-low-level/). Usaremos una app flask para generar una interfaz sencilla.
+
+[^1]: [Install-opensearch/docker - opensearch.org](https://opensearch.org/docs/latest/install-and-configure/install-opensearch/docker/#sample-docker-composeyml)
