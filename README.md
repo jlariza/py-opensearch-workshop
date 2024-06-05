@@ -1,6 +1,6 @@
 # Indexa tu información con OpenSearch y Python
 
-License: MIT
+[License: MIT](https://github.com/jlariza/py-opensearch-workshop/blob/main/LICENSE)
 
 OpenSearch es una herramienta poderosa y flexible para la indexación y gestión de datos. A su vez, Python es un lenguaje de programación popular y versátil que se puede utilizar para trabajar en gran cantidad de aplicaciones (Web, AI, Data Science, etc.)
 
@@ -96,3 +96,7 @@ docker compose -f local.yml run --rm django python manage.py opensearch index cr
 ```bash
 docker compose -f local.yml run --rm django python manage.py opensearch document index
 ```
+
+### **pure_python**
+
+En la parte de python puro del workshop, consultaremos el índice de pokemons de OpenSearch creado con la app de Django; esta vez usando la librería [opensearch-py](https://opensearch.org/docs/latest/clients/python-low-level/). Usaremos una app flask para generar una interfaz sencilla.
